@@ -38,28 +38,62 @@
     
     // Array.prototype.filter()
     // 1. Filter the list of inventors for those who were born in the 1500's
-
+    let one = inventors.filter((inventor) => { return (inventor.year >= 1500 && inventor.year < 1600)})
+    console.table(one)
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
+    let two = inventors.map((inventor) => { return `${inventor.first} ${inventor.last}` })
+    console.log(two)
+
 
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
+    let three = inventors.sort((a, b) => b.year - a.year)
+    console.log(three)
 
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
+    let four = inventors.reduce((total, current) => {return total + (current.passed  - current.year)}, 0)
+    console.log(four)
 
     // 5. Sort the inventors by years lived
+    let five = inventors.sort((a, b) => (a.passed - a.year) - (b.passed - b.year))
+    console.log(five)
 
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+    // done in the console for the website
 
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+    let seven = people.sort((a, b) => {
+      let last_a = a.split(", ")[1]
+      let last_b = b.split(", ")[1]
+
+      if (last_a > last_b){
+        return 1
+      } else {
+        return -1
+      }
+
+    })
+    console.log(seven)
 
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    let eight = data.reduce((map, current) => {
+        if (current in map) {
+          map[current] = map[current] + 1;
+        } else {
+          map[current] = 1
+        }
+
+        return map
+    }, {})
+
+    console.log(eight)
 
   </script>
 </body>
